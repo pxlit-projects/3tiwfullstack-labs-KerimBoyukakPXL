@@ -1,0 +1,16 @@
+version: '3.7'
+
+services:
+  mysql-departmentservice:
+    image: mysql:latest
+    ports:
+      - '3307:3306'
+    restart: always
+    environment:
+      MYSQL_DATABASE: departmentservice_db
+      MYSQL_ROOT_PASSWORD: password
+    volumes:
+      - mysql-departmentservice-data:/var/lib/mysql
+
+volumes:
+  mysql-departmentservice-data:

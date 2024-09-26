@@ -1,0 +1,16 @@
+version: '3.7'
+
+services:
+  mysql-organization:
+    image: mysql:latest
+    ports:
+      - '3308:3306'
+    restart: always
+    environment:
+      MYSQL_DATABASE: organizationservice_db
+      MYSQL_ROOT_PASSWORD: password
+    volumes:
+      - mysql-organizationservice-data:/var/lib/mysql
+
+volumes:
+  mysql-organizationservice-data:
