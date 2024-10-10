@@ -15,6 +15,7 @@ import java.util.List;
 @AllArgsConstructor
 public class Organization {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
     private String address;

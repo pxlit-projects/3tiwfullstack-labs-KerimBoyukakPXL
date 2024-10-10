@@ -1,5 +1,6 @@
 package be.pxl.microservices.services;
 
+import be.pxl.microservices.client.EmployeeClient;
 import be.pxl.microservices.domain.Department;
 import be.pxl.microservices.domain.dto.DepartmentRequest;
 import be.pxl.microservices.domain.dto.DepartmentResponse;
@@ -13,6 +14,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class DepartmentService implements IDepartmentService {
     private final DepartmentRepository departmentRepository;
+    private final EmployeeClient employeeClient;
 
     @Override
     public List<DepartmentResponse> getAllEmployees() {
@@ -36,6 +38,7 @@ public class DepartmentService implements IDepartmentService {
     @Override
     public DepartmentResponse getDepartmentById(Long id) {
         Department department = departmentRepository.findById(id).orElseThrow();
+        //employeeClient.findEmployeeByDepartment(id);
         return mapToDepartmentResponse(department);
     }
 
