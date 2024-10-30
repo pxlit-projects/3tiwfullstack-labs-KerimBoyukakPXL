@@ -26,13 +26,6 @@ export class CustomerListComponent implements OnInit {
       next: customers => this.filteredData = customers
     });
   }
-  processAdd(customer: Customer){
-    this.customerService.addCustomer(customer).subscribe({
-      next: () => {
-        this.fetchData();
-      }
-    });
-  }
   fetchData(): void {
     this.customerService.getCustomers().subscribe({
       next: customers => {

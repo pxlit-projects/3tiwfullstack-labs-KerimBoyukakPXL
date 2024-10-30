@@ -3,12 +3,15 @@ import {Customer} from "../models/customer.model";
 import {FilterModel} from "../models/filter.model";
 import {HttpClient} from "@angular/common/http";
 import {map, Observable} from "rxjs";
+import { environment } from '../../../environments/environment';    // ALWAYS import environment.ts file, not environment.development.ts
+                                                                    // the app will use the correct environment file based on the build configuration
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class CustomerService {
-  api:string = 'api/customers';
+  api:string = environment.apiUrl;
   http:HttpClient = inject(HttpClient);
   getCustomers(): Observable<Customer[]> {
     return this.http.get<Customer[]>(this.api);
@@ -29,5 +32,13 @@ export class CustomerService {
   addCustomer(customer: Customer): Observable<Customer> {
     return this.http.post<Customer>(this.api, customer);
   }
+  updateCustomer(customer: Customer): Observable<Customer>{
+    return this.http.put<Customer>(this.api + customer.id, customer);
+  }
+
+  getCustomer(id: number): Observable<Customer> {
+    return this.http.get<Customer>(this.api + id);
+  }
+
 }
 

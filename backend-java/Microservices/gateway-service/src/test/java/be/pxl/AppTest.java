@@ -1,4 +1,4 @@
-package be.pxl.microservices;
+package be.pxl;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
